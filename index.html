@@ -1,201 +1,313 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الشركة المصرية للصرافة | أسعار العملات وجميع الفروع</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #004b93;
-            --secondary: #10b981;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معرض السيارات الحديثة</title>
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+  <style>
+    /* إعدادات عامة */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; max-width: 1200px; margin: auto; }
-        .logo { font-size: 1.4rem; font-weight: bold; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-        .nav-links { display: flex; list-style: none; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; }
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+    }
 
-        .hero { background: linear-gradient(135deg, var(--primary), #00264d); color: white; padding: 3rem 5% 4.5rem; text-align: center; }
-        .hero h1 { font-size: 2.2rem; margin-bottom: 0.8rem; }
-        .hero p { opacity: 0.9; max-width: 650px; margin: auto; }
+    /* الهيدر وقائمة التنقل */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1a1a2e;
+      padding: 20px 8%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        .main-grid { max-width: 1200px; margin: -40px auto 3rem; padding: 0 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 1.8rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .card h2 { color: var(--primary); margin-bottom: 1.2rem; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+    .logo {
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-        .table-responsive { max-height: 400px; overflow-y: auto; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0; font-size: 0.92rem; }
-        th { background: #f1f5f9; color: var(--gray); position: sticky; top: 0; }
+    .logo span {
+      color: #e94560;
+    }
 
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
-        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; }
-        .btn { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn:hover { background: #003366; }
-        .result-box { margin-top: 15px; padding: 12px; background: #e0f2fe; border-radius: 6px; text-align: center; font-weight: bold; color: var(--primary); }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
 
-        .branches-section { max-width: 1200px; margin: 0 auto 3rem; padding: 0 15px; }
-        .branches-section h2 { color: var(--primary); margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem; }
-        .branches-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .branch-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; position: relative; }
-        .featured-badge { position: absolute; top: 10px; right: 10px; background: #e11d48; color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
-        .branch-img { width: 100%; height: 160px; object-fit: cover; background-color: #cbd5e1; }
-        .branch-info { padding: 15px; }
-        .branch-info h3 { color: var(--primary); margin-bottom: 8px; font-size: 1.1rem; }
-        .branch-info p { font-size: 0.88rem; color: var(--gray); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    nav ul li {
+      margin-right: 20px;
+    }
 
-        footer { background: var(--dark); color: white; text-align: center; padding: 1.5rem; margin-top: 3rem; font-size: 0.9rem; }
-    </style>
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #e94560;
+    }
+
+    /* الواجهة الرئيسية */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1200x500') center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+    }
+
+    .hero-text h1 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      background-color: #e94560;
+      color: #fff;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #c73850;
+    }
+
+    /* قسم عرض السيارات والتصفية */
+    .cars-section {
+      padding: 50px 8%;
+      text-align: center;
+    }
+
+    .cars-section h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    /* أزرار التصفية */
+    .filter-buttons {
+      margin-bottom: 30px;
+    }
+
+    .filter-btn {
+      background-color: #fff;
+      border: 2px solid #1a1a2e;
+      color: #1a1a2e;
+      padding: 8px 20px;
+      margin: 5px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background-color: #e94560;
+      border-color: #e94560;
+      color: #fff;
+    }
+
+    /* شبكة بطاقات السيارات */
+    .cars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .car-card {
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding-bottom: 20px;
+      text-align: right;
+      transition: transform 0.3s ease;
+    }
+
+    .car-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .car-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .car-card h3 {
+      padding: 15px 15px 5px 15px;
+    }
+
+    .price {
+      color: #e94560;
+      font-weight: bold;
+      padding: 0 15px;
+    }
+
+    .specs {
+      color: #666;
+      font-size: 14px;
+      padding: 5px 15px 15px 15px;
+    }
+
+    .buy-btn {
+      width: calc(100% - 30px);
+      margin: 0 15px;
+      padding: 10px;
+      background-color: #1a1a2e;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buy-btn:hover {
+      background-color: #e94560;
+    }
+
+    /* الفوتر */
+    footer {
+      background-color: #1a1a2e;
+      color: #888;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo"><i class="fa-solid fa-building-columns"></i> المصرية للصرافة</div>
-            <ul class="nav-links">
-                <li><a href="#rates">جميع الأسعار</a></li>
-                <li><a href="#converter">الحاسبة</a></li>
-                <li><a href="#branches">الفروع</a></li>
-            </ul>
-        </div>
-    </header>
+  <!-- الهيدر وقائمة التنقل -->
+  <header>
+    <div class="logo">سيارات<span>القمة</span></div>
+    <nav>
+      <ul>
+        <li><a href="#hero">الرئيسية</a></li>
+        <li><a href="#cars">السيارات المتاحة</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section class="hero">
-        <h1>الشركة المصرية للصرافة</h1>
-        <p>إحدى شركات البنك الأهلي المصري - تغطي فروعنا كافة المحافظات بما فيها فرع سمالوط والمنيا ومختلف أقاليم مصر</p>
-    </section>
+  <!-- القسم الرئيسي (Hero) -->
+  <section id="hero" class="hero">
+    <div class="hero-text">
+      <h1>اختر سيارة أحلامك بأفضل الأثمان</h1>
+      <p>تشكيلة واسعة من أحدث السيارات الرياضية والكهربائية والعائلية.</p>
+      <a href="#cars" class="btn">استكشف المعرض</a>
+    </div>
+  </section>
 
-    <div class="main-grid">
-        <!-- جميع أسعار العملات -->
-        <div class="card" id="rates">
-            <h2><i class="fa-solid fa-coins"></i> أسعار العملات الشاملة (مقابل الجنيه)</h2>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr><th>العملة</th><th>شراء</th><th>بيع</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>دولار أمريكي (USD)</td><td>51.75</td><td>51.75</td></tr>
-                        <tr><td>يورو (EUR)</td><td>52.80</td><td>53.10</td></tr>
-                        <tr><td>جنيه إسترليني (GBP)</td><td>63.10</td><td>63.50</td></tr>
-                        <tr><td>ريال سعودي (SAR)</td><td>12.92</td><td>12.96</td></tr>
-                        <tr><td>درهم إماراتي (AED)</td><td>13.20</td><td>13.23</td></tr>
-                        <tr><td>دينار كويتي (KWD)</td><td>158.10</td><td>159.20</td></tr>
-                        <tr><td>ريال قطري (QAR)</td><td>13.30</td><td>13.35</td></tr>
-                        <tr><td>دينار بحريني (BHD)</td><td>128.60</td><td>129.10</td></tr>
-                        <tr><td>ريال عماني (OMR)</td><td>125.90</td><td>126.30</td></tr>
-                        <tr><td>فرنك سويسري (CHF)</td><td>55.40</td><td>55.80</td></tr>
-                        <tr><td>100 ين ياباني (JPY)</td><td>32.10</td><td>32.40</td></tr>
-                        <tr><td>دولار كندي (CAD)</td><td>35.70</td><td>36.00</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  <!-- قسم السيارات مع التصفية -->
+  <section id="cars" class="cars-section">
+    <h2>أحدث السيارات المتاحة</h2>
 
-        <!-- الحاسبة الشاملة -->
-        <div class="card" id="converter">
-            <h2><i class="fa-solid fa-calculator"></i> حاسبة التحويل السريعة</h2>
-            <div class="form-group">
-                <label>المبلغ المراد تحويله:</label>
-                <input type="number" id="calcAmount" value="100" min="1">
-            </div>
-            <div class="form-group">
-                <label>اختر العملة:</label>
-                <select id="calcCurrency">
-                    <option value="51.75">دولار أمريكي (USD)</option>
-                    <option value="52.80">يورو (EUR)</option>
-                    <option value="63.10">جنيه إسترليني (GBP)</option>
-                    <option value="12.92">ريال سعودي (SAR)</option>
-                    <option value="13.20">درهم إماراتي (AED)</option>
-                    <option value="158.10">دينار كويتي (KWD)</option>
-                    <option value="13.30">ريال قطري (QAR)</option>
-                    <option value="128.60">دينار بحريني (BHD)</option>
-                    <option value="125.90">ريال عماني (OMR)</option>
-                </select>
-            </div>
-            <button class="btn" onclick="processCalc()">احسب بالجنيه المصري</button>
-            <div class="result-box" id="calcOutput">النتيجة: 4,850.00 جنيه مصري</div>
-        </div>
+    <!-- أزرار التصفية -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="filterCars('all')">الكل</button>
+      <button class="filter-btn" onclick="filterCars('sedan')">سيدان</button>
+      <button class="filter-btn" onclick="filterCars('suv')">دفع رباعي (SUV)</button>
+      <button class="filter-btn" onclick="filterCars('electric')">كهربائية</button>
     </div>
 
-    <!-- شبكة الفروع -->
-    <section class="branches-section" id="branches">
-        <h2>شبكة الفروع المتاحة</h2>
-        <div class="branches-grid">
-            
-            <!-- فرع سمالوط -->
-            <div class="branch-card">
-                <span class="featured-badge">فرع سمالوط</span>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8_0ZSVRya1U1HPzQmLJWUSV3OLmiyspurMnlIKGy_QUb4Ks2bzZek1kpK&s=10" class="branch-img" alt="فرع سمالوط">
-                <div class="branch-info">
-                    <h3>فرع سمالوط (المنيا)</h3>
-                    <p><i class="fa-solid fa-location-dot"></i> شارع التجارة، مدينة سمالوط، المنيا</p>
-                    <p><i class="fa-solid fa-clock"></i> 8:30 صباحاً - 11:00 مساءً (يومياً)</p>
-                    <p><i class="fa-solid fa-phone"></i> 086-3600000</p>
-                </div>
-            </div>
+    <!-- كروت السيارات -->
+    <div class="cars-grid">
 
-            <!-- فرع المنيا الرئيسي -->
-            <div class="branch-card">
-                <img src="https://scontent.faly2-1.fna.fbcdn.net/v/t39.30808-1/542751498_780127031441884_641613546083812350_n.jpg?stp=dst-jpg_tt6&cstp=mx1024x1030&ctp=s200x200&_nc_cat=108&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=olxvs-LjoQcQ7kNvwEv7nDX&_nc_oc=Adp6aEUkchVWFOsO2fAW-qDRc8fsG-cfBi-zbNOoCO3DmKeZEB_u14CZXk8rjT588sw&_nc_zt=24&_nc_ht=scontent.faly2-1.fna&_nc_gid=7CzlNMqKHI9rNUhex3G3oQ&_nc_ss=7b2a8&oh=00_AQI1W_iuIaJSw3oPMnc-OGLSOaazghWNZLfRXC2PIavybQ&oe=6ABB23D5" class="branch-img" alt="فرع المنيا">
-                <div class="branch-info">
-                    <h3>فرع المنيا (الرئيسي)</h3>
-                    <p><i class="fa-solid fa-location-dot"></i> كورنيش النيل، أمام نادي الشرطة، مدينة المنيا</p>
-                    <p><i class="fa-solid fa-clock"></i> 8:30 صباحاً - 11:00 مساءً</p>
-                    <p><i class="fa-solid fa-phone"></i> 086-2339339</p>
-                </div>
-            </div>
+      <!-- سيارة 1 -->
+      <div class="car-card sedan">
+        <img src="https://via.placeholder.com/400x250" alt="مرسيدس">
+        <h3>مرسيدس E-Class</h3>
+        <p class="price">السعر: 180,000 $</p>
+        <p class="specs">موديل 2024 • محرك V6 • أوتوماتيك</p>
+        <button class="buy-btn" onclick="requestCar('مرسيدس E-Class')">طلب معاينة</button>
+      </div>
 
-            <!-- فرع أسيوط -->
-            <div class="branch-card">
-                <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT5EnwudCo5kHMfn9rVhuo2B-lJ4dksdtUD4Y35JS1pi1w56VsZXqTBgIIZKxYh1rB__zkopgk9kLBd8mA" class="branch-img" alt="فرع أسيوط">
-                <div class="branch-info">
-                    <h3>فرع أسيوط</h3>
-                    <p><i class="fa-solid fa-location-dot"></i> شارع النصر، حى شرق، أسيوط</p>
-                    <p><i class="fa-solid fa-clock"></i> 8:30 صباحاً - 11:00 مساءً</p>
-                    <p><i class="fa-solid fa-phone"></i> 088-2300000</p>
-                </div>
-            </div>
+      <!-- سيارة 2 -->
+      <div class="car-card suv">
+        <img src="https://via.placeholder.com/400x250" alt="بي إم دبليو">
+        <h3>بي إم دبليو X5</h3>
+        <p class="price">السعر: 165,000 $</p>
+        <p class="specs">موديل 2024 • دفع رباعي • أوتوماتيك</p>
+        <button class="buy-btn" onclick="requestCar('بي إم دبليو X5')">طلب معاينة</button>
+      </div>
 
-            <!-- فرع مدينة نصر -->
-            <div class="branch-card">
-                <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT5EnwudCo5kHMfn9rVhuo2B-lJ4dksdtUD4Y35JS1pi1w56VsZXqTBgIIZKxYh1rB__zkopgk9kLBd8mA" class="branch-img" alt="فرع مدينة نصر">
-                <div class="branch-info">
-                    <h3>فرع مدينة نصر (القاهرة)</h3>
-                    <p><i class="fa-solid fa-location-dot"></i> 57 شارع مصطفى النحاس، تقاطع مكرم عبيد</p>
-                    <p><i class="fa-solid fa-clock"></i> 8:30 صباحاً - 11:30 مساءً</p>
-                    <p><i class="fa-solid fa-phone"></i> 02-22700000</p>
-                </div>
-            </div>
+      <!-- سيارة 3 -->
+      <div class="car-card electric">
+        <img src="https://via.placeholder.com/400x250" alt="تسلا">
+        <h3>تسلا موديل S</h3>
+        <p class="price">السعر: 140,000 $</p>
+        <p class="specs">موديل 2024 • كهربائية بالكامل</p>
+        <button class="buy-btn" onclick="requestCar('تسلا موديل S')">طلب معاينة</button>
+      </div>
 
-        </div>
-    </section>
+      <!-- سيارة 4 -->
+      <div class="car-card sedan">
+        <img src="https://via.placeholder.com/400x250" alt="أودي">
+        <h3>أودي A6</h3>
+        <p class="price">السعر: 155,000 $</p>
+        <p class="specs">موديل 2024 • أوتوماتيك • بنزين</p>
+        <button class="buy-btn" onclick="requestCar('أودي A6')">طلب معاينة</button>
+      </div>
 
-    <footer>
-        <p>&copy; 2026 الشركة المصرية للصرافة - جميع الحقوق محفوظة</p>
-    </footer>
+    </div>
+  </section>
 
-    <script>
-        function processCalc() {
-            const amount = parseFloat(document.getElementById('calcAmount').value);
-            const rate = parseFloat(document.getElementById('calcCurrency').value);
-            
-            if (amount && rate) {
-                const total = (amount * rate).toLocaleString('ar-EG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                document.getElementById('calcOutput').innerText = `النتيجة: ${total} جنيه مصري`;
-            } else {
-                document.getElementById('calcOutput').innerText = 'يرجى إدخال مبلغ صحيح';
-            }
+  <!-- الفوتر -->
+  <footer>
+    <p>جميع الحقوق محفوظة &copy; 2026 معرض سيارات القمة</p>
+  </footer>
+
+  <!-- كود الجافا سكريبت -->
+  <script>
+    // وظيفة تصفية السيارات
+    function filterCars(category) {
+      const cards = document.querySelectorAll('.car-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      // تغيير زر التصفية النشط
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // إظهار أو إخفاء السيارات حسب الفئة
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
         }
-    </script>
+      });
+    }
+
+    // وظيفة الضغط على طلب معاينة
+    function requestCar(carName) {
+      alert('شكراً لاهتمامك بـ ' + carName + '! سيتم التواصل معك من قبل فريق المبيعات قريباً.');
+    }
+  </script>
+
 </body>
 </html>
