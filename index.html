@@ -3,256 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الصرافه المصريه - أسعار العملات ومواعيد العمل</title>
-    <meta name="description" content="موقع الصرافه المصريه لمتابعة أحدث أسعار العملات اليوم وحساب التحويلات ومواعيد العمل">
-    <meta name="keywords" content="الصرافه المصريه, أسعار العملات, بنك مصر, سمالوط, حاسبة العملات">
-    
-    <!-- CSS (تنسيقات التصميم والشكل) -->
+    <title>Retro Football Hub - مكتبة ألعاب كرة القدم القديمة</title>
     <style>
         :root {
-            --primary: #0056b3;
-            --secondary: #28a745;
-            --dark: #212529;
-            --light: #f8f9fa;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: var(--dark); line-height: 1.6; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
 
-        /* شريط التنقل العلوي Nav */
-        header { background: var(--primary); color: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
-        .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
-        .logo { font-size: 22px; font-weight: bold; }
-        .nav-links { display: flex; gap: 15px; list-style: none; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.3s; padding: 5px 10px; border-radius: 5px; }
-        .nav-links a:hover { background: rgba(255,255,255,0.2); }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-        /* البانر الرئيسي الترحيبي */
-        .hero { background: linear-gradient(rgba(0,86,179,0.85), rgba(0,86,179,0.85)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80') center/cover; color: white; text-align: center; padding: 60px 20px; margin-bottom: 30px; }
-        .hero h1 { font-size: 36px; margin-bottom: 10px; }
-        .hero p { font-size: 18px; opacity: 0.9; }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            border: 1px solid #334155;
+            margin-bottom: 30px;
+        }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; }
+        h1 {
+            color: var(--accent-green);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
 
-        /* كروت الأقسام */
-        .section-card { background: white; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .section-title { color: var(--primary); border-bottom: 3px solid var(--primary); padding-bottom: 8px; margin-bottom: 20px; font-size: 22px; }
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
 
-        /* مواعيد العمل */
-        .working-hours { background-color: #e8f5e9; border-right: 6px solid var(--secondary); padding: 15px; border-radius: 8px; font-size: 16px; }
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: white;
+            font-size: 1rem;
+            margin-top: 20px;
+            box-sizing: border-box;
+        }
 
-        /* أسعار العملات */
-        .currency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .currency-card { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 20px; text-align: center; transition: 0.3s; }
-        .currency-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
-        .currency-header { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px; }
-        .currency-flag { width: 35px; height: 24px; border-radius: 3px; object-fit: cover; }
-        .rate-badge { font-size: 18px; font-weight: bold; color: #2e7d32; background: #e8f5e9; padding: 8px 12px; border-radius: 6px; display: inline-block; margin-top: 10px; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
 
-        /* الحاسبة */
-        .calc-form { display: flex; flex-wrap: wrap; gap: 15px; align-items: center; margin-top: 15px; }
-        .calc-form input, .calc-form select { padding: 12px; border: 1px solid #ccc; border-radius: 6px; flex: 1; min-width: 180px; font-size: 16px; }
-        .calc-btn { background: var(--secondary); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }
-        .calc-btn:hover { background: #218838; }
-        .calc-result { margin-top: 15px; font-size: 20px; font-weight: bold; color: var(--primary); }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #334155;
+            transition: transform 0.2s, border-color 0.2s;
+        }
 
-        /* المساعد الذكي */
-        .chat-logs { height: 200px; overflow-y: auto; border: 1px solid #e0e0e0; padding: 15px; background: #fafafa; border-radius: 8px; margin-bottom: 15px; }
-        .chat-logs p { margin-bottom: 10px; }
-        .chat-input-group { display: flex; gap: 10px; }
-        .chat-input-group input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
-        .chat-input-group button { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-size: 15px; }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-green);
+        }
 
-        footer { text-align: center; padding: 20px; background: var(--dark); color: white; margin-top: 40px; }
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-blue);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .badge-pes { background-color: #0284c7; color: white; }
+        .badge-fifa { background-color: #ea580c; color: white; }
+
+        .download-btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: var(--accent-green);
+            color: #0f172a;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            transition: background-color 0.2s;
+        }
+
+        .download-btn:hover {
+            background-color: #059669;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 
-    <!-- HTML (الهيكل والمحتوى) -->
+<div class="container">
     <header>
-        <div class="nav-container">
-            <div class="logo">🏛️ الصرافه المصريه</div>
-            <ul class="nav-links">
-                <li><a href="#rates">الأسعار</a></li>
-                <li><a href="#calculator">الحاسبة</a></li>
-                <li><a href="#hours">المواعيد</a></li>
-                <li><a href="#ai-assistant">المساعد الذكي</a></li>
-            </ul>
-        </div>
+        <h1>🎮 مكتبة ألعاب PES & FIFA الكلاسيكية</h1>
+        <p class="subtitle">روابط موثوقة وآمنة لتحميل جميع الأجزاء القديمة من مصادرها الرسمية والآمنة</p>
     </header>
 
-    <div class="hero">
-        <h1>أهلاً بك أيها العميل العزيز</h1>
-        <p>موقعك الأول لمتابعة أسعار البنوك والتحويلات المالية المباشرة</p>
-    </div>
+    <div class="grid">
+        <!-- PES 2016 -->
+        <div class="card">
+            <span class="badge badge-pes">PES</span>
+            <h3>Pro Evolution Soccer 2016</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">نسخة الكمبيوتر الكاملة. متوفرة عبر الأرشيف الرقمي المفتوح بأمان بدون إعلانات.</p>
+            <a href="https://archive.org/details/pes-2016-pc" target="_blank" class="download-btn">تحميل من Internet Archive</a>
+        </div>
 
-    <div class="container">
+        <!-- PES 2013 -->
+        <div class="card">
+            <span class="badge badge-pes">PES</span>
+            <h3>Pro Evolution Soccer 2013</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">النسخة الأشهر. شاملة جميع ملفات التثبيت الأساسية للعمل على الأجهزة المتوسطة.</p>
+            <a href="https://archive.org/details/pes-2013-pc-full" target="_blank" class="download-btn">تحميل من Internet Archive</a>
+        </div>
 
-        <!-- مواعيد العمل -->
-        <section id="hours" class="section-card">
-            <h2 class="section-title">⏰ مواعيد العمل الرسمية</h2>
-            <div class="working-hours">
-                <p><strong>• جميع أيام الأسبوع:</strong> من الساعة 8:30 صباحاً حتى الساعة 9:00 مساءً.</p>
-                <p><strong>• يوم الجمعة:</strong> من بعد صلاة الجمعة مباشرة حتى الساعة 9:00 مساءً.</p>
-            </div>
-        </section>
+        <!-- FIFA 14 -->
+        <div class="card">
+            <span class="badge badge-fifa">FIFA</span>
+            <h3>FIFA 14</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">أفضل أجزاء فيفا القديمة للكمبيوتر، تدعم المودات والباتشات الحديثة.</p>
+            <a href="https://archive.org/details/fifa-14-pc-game" target="_blank" class="download-btn">تحميل من Internet Archive</a>
+        </div>
 
-        <!-- أسعار العملات -->
-        <section id="rates" class="section-card">
-            <h2 class="section-title">💵 أسعار العملات اليوم (بنك مصر)</h2>
-            <div class="currency-grid">
-                
-                <div class="currency-card">
-                    <div class="currency-header">
-                        <img src="https://flagcdn.com/w40/us.png" alt="أمريكا" class="currency-flag">
-                        <h3>الدولار الأمريكي (USD)</h3>
-                    </div>
-                    <div id="usd-price" class="rate-badge">شراء: -- | بيع: --</div>
-                </div>
-
-                <div class="currency-card">
-                    <div class="currency-header">
-                        <img src="https://flagcdn.com/w40/eu.png" alt="الاتحاد الأوروبي" class="currency-flag">
-                        <h3>اليورو (EUR)</h3>
-                    </div>
-                    <div id="eur-price" class="rate-badge">شراء: -- | بيع: --</div>
-                </div>
-
-                <div class="currency-card">
-                    <div class="currency-header">
-                        <img src="https://flagcdn.com/w40/sa.png" alt="السعودية" class="currency-flag">
-                        <h3>الريال السعودي (SAR)</h3>
-                    </div>
-                    <div id="sar-price" class="rate-badge">شراء: -- | بيع: --</div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- حاسبة التحويل -->
-        <section id="calculator" class="section-card">
-            <h2 class="section-title">🧮 حاسبة تحويل العملات</h2>
-            <div class="calc-form">
-                <input type="number" id="calc-amount" placeholder="أدخل المبلغ" value="100">
-                <select id="calc-currency">
-                    <option value="USD">دولار أمريكي (USD)</option>
-                    <option value="EUR">يورو (EUR)</option>
-                    <option value="SAR">ريال سعودي (SAR)</option>
-                </select>
-                <button class="calc-btn" onclick="calculateTotal()">احسب بالجنيه</button>
-            </div>
-            <div id="calc-result" class="calc-result">النتيجة: 0.00 جنيه مصري</div>
-        </section>
-
-        <!-- المساعد الذكي -->
-        <section id="ai-assistant" class="section-card">
-            <h2 class="section-title">🤖 المساعد الآلي لخدمة العملاء</h2>
-            <div class="chat-logs" id="chat-logs">
-                <p><strong>المساعد:</strong> أهلاً بك! يمكنك سؤالي عن أسعار العملات، مواعيد العمل، أو فرع سمالوط.</p>
-            </div>
-            <div class="chat-input-group">
-                <input type="text" id="user-msg" placeholder="اكتب سؤالك هنا...">
-                <button onclick="sendAiMessage()">إرسال</button>
-            </div>
-        </section>
-
+        <!-- EvoWeb Community -->
+        <div class="card">
+            <span class="badge badge-pes">باتشات ومودات</span>
+            <h3>مجتمع Evo-Web العالمي</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">تحميل أحدث الانتقالات، الأطقم، والملاعب لجميع أجزاء PES و FIFA.</p>
+            <a href="https://evoweb.uk" target="_blank" class="download-btn">زيارة موقع Evo-Web</a>
+        </div>
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة © الصرافه المصريه - فرع سمالوط</p>
+        <p>ملاحظة: جميع الألعاب المذكورة مصنفة كـ Abandonware (ألعاب مهجورة توقف دعمها رسمياً).</p>
     </footer>
+</div>
 
-    <!-- JavaScript (البرمجة والربط الذكي) -->
-    <script>
-        let currentRates = {
-            USD: 48.50,
-            EUR: 52.10,
-            SAR: 12.90
-        };
-
-        // جلب أسعار العملات
-        async function fetchRates() {
-            const usdElem = document.getElementById('usd-price');
-            const eurElem = document.getElementById('eur-price');
-            const sarElem = document.getElementById('sar-price');
-
-            try {
-                const response = await fetch('https://open.er-api.com/v6/latest/USD');
-                const data = await response.json();
-
-                if (data && data.rates && data.rates.EGP) {
-                    currentRates.USD = data.rates.EGP;
-                    currentRates.EUR = currentRates.USD / data.rates.EUR;
-                    currentRates.SAR = currentRates.USD / data.rates.SAR;
-
-                    if (usdElem) usdElem.innerHTML = `شراء: <b>${currentRates.USD.toFixed(2)}</b> | بيع: <b>${(currentRates.USD + 0.15).toFixed(2)}</b> ج.م`;
-                    if (eurElem) eurElem.innerHTML = `شراء: <b>${currentRates.EUR.toFixed(2)}</b> | بيع: <b>${(currentRates.EUR + 0.20).toFixed(2)}</b> ج.م`;
-                    if (sarElem) sarElem.innerHTML = `شراء: <b>${currentRates.SAR.toFixed(2)}</b> | بيع: <b>${(currentRates.SAR + 0.08).toFixed(2)}</b> ج.م`;
-                }
-            } catch (error) {
-                console.error("خطأ في التحميل:", error);
-                if (usdElem) usdElem.innerHTML = "شراء: <b>48.50</b> | بيع: <b>48.65</b> ج.م";
-                if (eurElem) eurElem.innerHTML = "شراء: <b>52.10</b> | بيع: <b>52.35</b> ج.م";
-                if (sarElem) sarElem.innerHTML = "شراء: <b>12.90</b> | بيع: <b>12.98</b> ج.م";
-            }
-        }
-
-        // دالة الحاسبة
-        function calculateTotal() {
-            const amount = parseFloat(document.getElementById('calc-amount').value);
-            const currency = document.getElementById('calc-currency').value;
-            const resultElem = document.getElementById('calc-result');
-
-            if (!amount || amount <= 0) {
-                resultElem.innerText = "برجاء إدخال مبلغ صحيح";
-                return;
-            }
-
-            const rate = currentRates[currency] || 48.50;
-            const total = amount * rate;
-
-            resultElem.innerText = `النتيجة: ${amount} ${currency} = ${total.toFixed(2)} جنيه مصري`;
-        }
-
-        // الشات الذكي
-        function sendAiMessage() {
-            const input = document.getElementById('user-msg');
-            const logs = document.getElementById('chat-logs');
-            const msg = input.value.trim();
-
-            if (!msg) return;
-
-            logs.innerHTML += `<p><strong>أنت:</strong> ${msg}</p>`;
-            input.value = '';
-
-            let reply = "أهلاً بك في الصرافه المصريه! يسعدنا خدمتك عبر موقعنا أو بزيارة فرعنا.";
-            const lower = msg.toLowerCase();
-
-            if (lower.includes("مواعيد") || lower.includes("وقت") || lower.includes("تفتح") || lower.includes("تغلق") || lower.includes("جمعة")) {
-                reply = "مواعيد العمل: طوال أيام الأسبوع من 8:30 ص حتى 9:00 م، ويوم الجمعة من بعد صلاة الجمعة حتى 9:00 م.";
-            } else if (lower.includes("دولار") || lower.includes("سعر") || lower.includes("ريال") || lower.includes("يورو") || lower.includes("عملات")) {
-                reply = "يمكنك مشاهدة أحدث أسعار بنك مصر المحدثة أعلى الصفحة مباشرة في جدول الأسعار.";
-            } else if (lower.includes("عنوان") || lower.includes("مكان") || lower.includes("سمالوط") || lower.includes("فرع")) {
-                reply = "فرعنا في مدينة سمالوط، نتشرف بزيارتك خلال مواعيد العمل الرسمية.";
-            } else if (lower.includes("حاسبة") || lower.includes("احسب") || lower.includes("تحويل")) {
-                reply = "يمكنك استخدام حاسبة التحويل الموجودة في الموقع لحساب أي مبلغ بالجنيه المصري فوراً.";
-            }
-
-            setTimeout(() => {
-                logs.innerHTML += `<p><strong>المساعد:</strong> ${reply}</p>`;
-                logs.scrollTop = logs.scrollHeight;
-            }, 300);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchRates();
-            const input = document.getElementById('user-msg');
-            if (input) {
-                input.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') sendAiMessage();
-                });
-            }
-        });
-    </script>
 </body>
 </html>
